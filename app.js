@@ -2,7 +2,7 @@ import sublinks from "./data.js";
 
 const toggleBtn = document.querySelector(".toggle-btn");
 const closeBtn = document.querySelector(".close-btn");
-const sideWrapper = document.querySelector(".side-wrapper");
+const sidebarWrapper = document.querySelector(".side-wrapper");
 const sidebar = document.querySelector(".sidebar-links");
 const linkBtns = [...document.querySelectorAll(".link-btn")];
 const submenu = document.querySelector(".submenu");
@@ -11,8 +11,23 @@ const nav = document.querySelector(".nav");
 
 //hide/show side bar
 toggleBtn.addEventListener("click", () => {
-  sideWrapper.classList.add("show");
+  sidebarWrapper.classList.add("show");
 });
 closeBtn.addEventListener("click", () => {
-  sideWrapper.classList.remove("show");
+  sidebarWrapper.classList.remove("show");
+});
+
+
+// set sidebar
+sidebar.innerHTML = sublinks
+.map(()=>{
+const {links, page} = item;
+return `<article>
+<h4>${page}</h4>
+<div class="sidebar-sublinks">
+${links.map((item)=>{
+  console.log(item);
+}).join('')}
+</article>`
+
 });
